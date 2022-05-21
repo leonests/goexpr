@@ -121,7 +121,7 @@ func convert2Float64(value interface{}) interface{} {
 		return float64(val)
 	case int16:
 		return float64(val)
-	// case int32: //rune is int32, 
+	// case int32: //rune is int32,
 	// 	return float64(val)
 	case int64:
 		return float64(val)

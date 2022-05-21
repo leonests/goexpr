@@ -71,16 +71,6 @@ var param = Param{
 
 func TestParseAst(t *testing.T) {
 	parseAstTests := []ParseAstTest{
-		// {
-		// 	Name:   "Simple Char",
-		// 	Input:  `'b' == 98`,
-		// 	Wanted: true,
-		// },
-		// {
-		// 	Name:   "Simple Char",
-		// 	Input:  `'b' - 1`,
-		// 	Wanted: 'a',
-		// },
 		{
 			Name:   "Simple Char",
 			Input:  `'a'`,
@@ -240,7 +230,7 @@ func TestParseAst(t *testing.T) {
 		{
 			Name:   "NEG PREFIX",
 			Input:  "-(1 * ( 2 * (3 + 4)) % 7)",
-			Wanted: -0.0,
+			Wanted: 0.0,
 		},
 		{
 			Name:   "Simple SHL",

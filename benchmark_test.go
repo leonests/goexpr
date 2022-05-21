@@ -17,16 +17,16 @@ func BenchmarkRulengine(b *testing.B) {
 			Input: "(2) + (2) == (4)",
 		},
 		{
-			Name: "single parameter",
+			Name:  "single parameter",
 			Input: "param_key",
-			Params: map[string]interface{} {
+			Params: map[string]interface{}{
 				"param_key": "param_val",
 			},
 		},
 		{
-			Name: "parameter",
+			Name:  "parameter",
 			Input: "param1 < param2",
-			Params: map[string]interface{} {
+			Params: map[string]interface{}{
 				"param1": 1,
 				"param2": 2,
 			},

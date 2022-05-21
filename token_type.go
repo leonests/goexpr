@@ -41,7 +41,7 @@ const (
 	LAND // &&
 	LOR  // ||
 
-	// comparator operators
+	// comparer operators
 	EQ  // ==
 	NEQ // !=
 	LT  // <
@@ -131,7 +131,7 @@ const (
 	priorityLOR
 	priorityLAND
 	priorityBIT
-	priorityCOMPARATOR
+	priorityCOMPARER
 	priorityBITSHIFT
 	priorityADD
 	priorityMUL
@@ -149,7 +149,7 @@ func (op TokenType) Priority() opPriority {
 	case LAND:
 		return priorityLAND
 	case EQ, NEQ, GT, LT, GEQ, LEQ:
-		return priorityCOMPARATOR
+		return priorityCOMPARER
 	case SHL, SHR:
 		return priorityBITSHIFT
 	case AND, OR, XOR:
@@ -189,7 +189,7 @@ func (op TokenType) isShortCircuit() bool {
 	return op.isTernary() || op.isLogical()
 }
 
-var tokenCOMPARATOR = map[TokenType]struct{}{
+var tokenCOMPARER = map[TokenType]struct{}{
 	EQ:  {},
 	NEQ: {},
 	GT:  {},

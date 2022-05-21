@@ -7,14 +7,14 @@ const rightShortCircuit int = 0
 var ternaryShortCircuit interface{}
 
 type Expr struct {
-	tokens    []LexerToken
-	astNode   *astNode
-	input string
+	tokens  []LexerToken
+	astNode *astNode
+	input   string
 }
 
 func NewExpr(expr string) (res *Expr, err error) {
 	res = &Expr{
-		input:  expr,
+		input: expr,
 	}
 	res.tokens, err = lexerScan(expr)
 	if err != nil {

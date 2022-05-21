@@ -29,8 +29,8 @@ func parseAst(stream *lexerStream) (*astNode, error) {
 		return parseAdd(stream)
 	case priorityBITSHIFT:
 		return parseBitShift(stream)
-	case priorityCOMPARATOR:
-		return parseComparator(stream)
+	case priorityCOMPARER:
+		return parseComparer(stream)
 	case priorityBIT:
 		return parseBit(stream)
 	case priorityLAND:
@@ -50,7 +50,7 @@ var (
 	parseAdd        parser
 	parseBit        parser
 	parseBitShift   parser
-	parseComparator parser
+	parseComparer   parser
 	parseLogicalAnd parser
 	parseLogicalOr  parser
 	parseTernary    parser
@@ -86,14 +86,14 @@ func init() {
 		nextPriority: parseAdd,
 		errFormat:    errNumericFormat,
 	})
-	parseComparator = buildParserWithPkg(&parserPkg{
-		validToken:   tokenCOMPARATOR,
+	parseComparer = buildParserWithPkg(&parserPkg{
+		validToken:   tokenCOMPARER,
 		nextPriority: parseBitShift,
-		errFormat:    errComparatorFormat,
+		errFormat:    errComparerFormat,
 	})
 	parseBit = buildParserWithPkg(&parserPkg{
 		validToken:   tokenBIT,
-		nextPriority: parseComparator,
+		nextPriority: parseComparer,
 		errFormat:    errNumericFormat,
 	})
 	parseLogicalAnd = buildParserWithPkg(&parserPkg{

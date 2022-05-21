@@ -1,13 +1,13 @@
 package rulengine
 
 const (
-	errNumericFormat    string = "value '%v' cannot be used with the numeric operator '%v', it is not a number"
-	errLogicalFormat    string = "value '%v' cannot be used with the logical operator '%v', it is not a bool"
-	errComparatorFormat string = "value '%v' cannot be used with the comparator operator '%v', it is not a number"
-	errTernaryFormat    string = "value '%v' cannot be used with the ternary operator '%v', it is not a bool"
-	errPrefixFormat     string = "value '%v' cannot be used with the prefix operator '%v'"
-	errSelectorFormat   string = "fail to select parameter '%v'"
-	errAccessorFormat   string = "fail to access parameter '%v'"
+	errNumericFormat  string = "value '%v' cannot be used with the numeric operator '%v', it is not a number"
+	errLogicalFormat  string = "value '%v' cannot be used with the logical operator '%v', it is not a bool"
+	errComparerFormat string = "value '%v' cannot be used with the COMPARER operator '%v', it is not a number"
+	errTernaryFormat  string = "value '%v' cannot be used with the ternary operator '%v', it is not a bool"
+	errPrefixFormat   string = "value '%v' cannot be used with the prefix operator '%v'"
+	errSelectorFormat string = "fail to select parameter '%v'"
+	errAccessorFormat string = "fail to access parameter '%v'"
 )
 
 type typeChecks struct {
@@ -29,7 +29,7 @@ func getTypeChecks(op TokenType) typeChecks {
 		}
 	case GT, LT, GEQ, LEQ:
 		return typeChecks{
-			both: comparatorTypeCheck,
+			both: comparerTypeCheck,
 		}
 	case AND, OR, XOR, SHL, SHR:
 		return typeChecks{
@@ -71,7 +71,7 @@ func addTypeCheck(left, right interface{}) bool {
 	return false
 }
 
-func comparatorTypeCheck(left, right interface{}) bool {
+func comparerTypeCheck(left, right interface{}) bool {
 	if isFloat64(left) && isFloat64(right) {
 		return true
 	}
