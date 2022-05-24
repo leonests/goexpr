@@ -34,9 +34,6 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
 
-    - name: Run Vet & Lint
+    - name: Run Vet
       run: |
-        export PATH=$PATH:$(go env GOPATH)/bin
-        go get golang.org/x/lint/golint
-        golint -set_exit_status ./...
         go vet ./...
