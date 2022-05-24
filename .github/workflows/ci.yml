@@ -9,8 +9,13 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-latest
+    name: Build
+    strategy:
+      matrix:
+        go: [1.16, 1.18]
 
+    runs-on: ubuntu-latest
+    container: golang:${{ matrix.go }}-stretch
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -23,7 +28,7 @@ jobs:
     - name: Install Dependencies
       run: |
         go version
-        go get -u golang.org/x/lint/golint
+        go get golang.org/x/lint/golint
 
     - name: Build
       run: go build -v ./...
@@ -36,6 +41,5 @@ jobs:
 
     - name: Run Vet & Lint
       run: |
-        export PATH=$PATH:$(go env GOPATH)/bin
         go vet ./...
-        golint -set_exit_status=1 ./...
+        golint -set_exit_status ./...
