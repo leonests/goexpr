@@ -27,7 +27,7 @@ jobs:
     
     - name: Install Dependencies
       run: |
-        go version
+        export PATH=$PATH:$(go env GOPATH)/bin
         go get golang.org/x/lint/golint
 
     - name: Build
