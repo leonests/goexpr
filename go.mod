@@ -1,3 +1,3 @@
-module github.com/leonests/rulengine
+module github.com/leonests/goexpr
 
 go 1.18

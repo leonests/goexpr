@@ -10,7 +10,7 @@ Goexpr provides support for evaluating arbitrary Go-like expressions.
 ## Installation
 When used with Go modules, use the following import path:
 
-    go get github.com/leonests/rulengine
+    go get github.com/leonests/goexpr
 
 ## Quickstart
 
