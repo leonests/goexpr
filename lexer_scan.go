@@ -39,6 +39,10 @@ func lexerScan(expr string) (tokens []LexerToken, err error) {
 
 		tokens = append(tokens, token)
 	}
+	err = checkLexerBalance(tokens)
+	if err != nil {
+		return nil, err
+	}
 	return tokens, nil
 }
 

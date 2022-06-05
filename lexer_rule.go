@@ -572,3 +572,25 @@ func getLexerRule(tokenType TokenType) (lexerRule, error) {
 		return lc, nil
 	}
 }
+
+func checkLexerBalance(tokens []LexerToken) error {
+	var parens, brackets int
+	stream := newLexerStream(tokens)
+	for stream.notEOF() {
+		token := stream.flowForward()
+		switch token.Type {
+		case LPAREN:
+			parens++
+		case LBRACKET:
+			brackets++
+		case RPAREN:
+			parens--
+		case RBRACKET:
+			brackets++
+		}
+	}
+	if parens != 0 || brackets != 0 {
+		return fmt.Errorf("unbalanced parenthesis or bracket")
+	}
+	return nil
+}
