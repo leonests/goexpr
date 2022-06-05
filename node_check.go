@@ -1,4 +1,4 @@
-package rulengine
+package goexpr
 
 const (
 	errNumericFormat  string = "value '%v' cannot be used with the numeric operator '%v', it is not a number"

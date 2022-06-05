@@ -1,4 +1,4 @@
-package rulengine
+package goexpr
 
 import "fmt"
 

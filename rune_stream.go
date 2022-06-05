@@ -1,4 +1,4 @@
-package rulengine
+package goexpr
 
 type runeStream struct {
 	runes []rune

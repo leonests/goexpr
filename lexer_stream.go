@@ -1,4 +1,4 @@
-package rulengine
+package goexpr
 
 type lexerStream struct {
 	tokens []LexerToken
