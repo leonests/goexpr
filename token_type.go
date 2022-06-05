@@ -1,4 +1,4 @@
-package rulengine
+package goexpr
 
 import "strconv"
 
@@ -56,8 +56,10 @@ const (
 	LBRACKET // [
 	RBRACKET // ]
 
+	FUNC
+
 	LITERAL // represent all literal operators
-	CLAUSE  // represent all clause operator
+	CLAUSE  // represent all clause operators
 	EOF
 )
 
@@ -106,6 +108,8 @@ var tokens = [...]string{
 
 	LBRACKET: "LBRACKET",
 	RBRACKET: "RBRACKET",
+
+	FUNC: "FUNC",
 
 	LITERAL: "LITERAL",
 	CLAUSE:  "CLAUSE",
@@ -162,7 +166,7 @@ func (op TokenType) Priority() opPriority {
 		return priorityPREFIX
 	case CLAUSE:
 		return priorityCLAUSE
-	case CHAR, STRING, NUMBER, BOOL, VARIABLE, SELECTOR, ACCESSOR, LITERAL:
+	case CHAR, STRING, NUMBER, BOOL, VARIABLE, SELECTOR, ACCESSOR, FUNC, LITERAL:
 		return priorityLITERAL
 	}
 	return priorityUNKNOWN
