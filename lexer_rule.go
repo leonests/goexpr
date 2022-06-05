@@ -586,7 +586,7 @@ func checkLexerBalance(tokens []LexerToken) error {
 		case RPAREN:
 			parens--
 		case RBRACKET:
-			brackets++
+			brackets--
 		}
 	}
 	if parens != 0 || brackets != 0 {
