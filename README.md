@@ -23,6 +23,8 @@ When used with Go modules, use the following import path:
 
 **Example 1: Simple Usage Without Parameters**
 ```go
+import "github.com/leonests/goexpr"
+
 expr, err := goexpr.NewExpr("1 > 0")
 result, err := expr.Eval(nil)
 // result is true.
@@ -30,6 +32,8 @@ result, err := expr.Eval(nil)
 
 **Example 2: Simple Usage With Parameters**
 ```go
+import "github.com/leonests/goexpr"
+
 expr, err := goexpr.NewExpr(`(x * y / 100) >= 50`)
 param := map[string]interface{}{ "x": 100, "y": 50}
 result, err := expr.Eval(parametes)
