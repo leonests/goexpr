@@ -25,15 +25,15 @@ When used with Go modules, use the following import path:
 ```go
 	expr, err := goexpr.NewExpr("1 > 0")
 	result, err := expr.Eval(nil)
-	// result is now set to "true", the bool value.
+	// result is true.
 ```
 
 **Example 2: Simple Usage With Parameters**
 ```go
-	expr, err := goexpr.NewExpr("(x * y / 100) >= 50")
+	expr, err := goexpr.NewExpr(`(x * y / 100) >= 50`)
     param := map[string]interface{}{ "x": 100, "y": 50}
 	result, err := expr.Eval(parametes)
-	// result is now set to "true", the bool value.
+	// result is true.
 ```
 
 ## Advanced
