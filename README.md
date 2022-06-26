@@ -31,9 +31,7 @@ When used with Go modules, use the following import path:
 **Example 2: Simple Usage With Parameters**
 ```go
 	expr, err := goexpr.NewExpr("(x * y / 100) >= 50")
-    parameters := make(map[string]interface{})
-	parameters["x"] = 100
-	parameters["y"] = 50
+    param := map[string]interface{}{ "x": 100, "y": 50}
 	result, err := expr.Eval(parametes)
 	// result is now set to "true", the bool value.
 ```
