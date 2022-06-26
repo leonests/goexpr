@@ -30,8 +30,8 @@ result, err := expr.Eval(nil)
 
 **Example 2: Simple Usage With Parameters**
 ```go
-param := map[string]interface{}{ "x": 100, "y": 50}
 expr, err := goexpr.NewExpr(`(x * y / 100) >= 50`)
+param := map[string]interface{}{ "x": 100, "y": 50}
 result, err := expr.Eval(parametes)
 // result is true.
 ```
