@@ -5,7 +5,14 @@
 ------
 # Goexpr
 
-Goexpr provides support for evaluating arbitrary Go-like expressions.
+Goexpr provides support for evaluating expressions with parameters, arimethetic, logical, and string operations.
+
+* basic expression: 1 > 0
+* parameterized expression: x > 0
+* nested parameterized expression: a.b > 0
+* arithmetic expression: (x * y / 100) >= 50
+* string expression: real == "expected"
+* float64 expression: (part / total) * 100
 
 ## Installation
 When used with Go modules, use the following import path:
@@ -14,8 +21,27 @@ When used with Go modules, use the following import path:
 
 ## Quickstart
 
-## Bracket Accessor
+**Example 1: Simple Usage Without Parameters**
+```go
+	expr, err := goexpr.NewExpr("1 > 0")
+	result, err := expr.Eval(nil)
+	// result is now set to "true", the bool value.
+```
 
-## Dot Accessor
+**Example 2: Simple Usage With Parameters**
+```go
+	expr, err := goexpr.NewExpr("(x * y / 100) >= 50")
+    parameters := make(map[string]interface{})
+	parameters["x"] = 100;
+	parameters["y"] = 50;
+	result, err := expr.Eval(parametes)
+	// result is now set to "true", the bool value.
+```
 
-##
+## Advanced
+
+### Bracket Accessor
+
+### Dot Accessor
+
+### Method
