@@ -56,7 +56,7 @@ const (
 	LBRACKET // [
 	RBRACKET // ]
 
-	FUNC
+	FUNC // represent function
 
 	LITERAL // represent all literal operators
 	CLAUSE  // represent all clause operators
