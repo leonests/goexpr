@@ -141,6 +141,22 @@ func calculatorSELECTOR(parts []string) calculator {
 	}
 }
 
+func calculatorFUNC(function ExprFunc) calculator {
+	return func(left, right interface{}, params map[string]interface{}) (interface{}, error) {
+		if right == nil {
+			if right == nil {
+				return function()
+			}
+			switch right.(type) {
+			case []interface{}:
+				return function(right.([]interface{})...)
+			default:
+				return function(right)
+			}
+		}
+	}
+}
+
 func isString(value interface{}) bool {
 	switch value.(type) {
 	case string:
